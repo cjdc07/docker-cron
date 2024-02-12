@@ -5,12 +5,10 @@ env >> /etc/environment
 auth_response=$(curl -X POST -H "Content-Type: application/json" -d '{
   "query": "mutation AuthenticateUser($email: String!, $password: String!) { authenticateUserWithPassword(email: $email, password: $password) { ... on UserAuthenticationWithPasswordSuccess { sessionToken } } }",
   "variables": {
-    "email": "$BOT_EMAIL",
-    "password": "$BOT_PASSWORD"
+    "email": "'"$BOT_EMAIL"'",
+    "password": "'"$BOT_PASSWORD"'"
   }
 }' $CMS_URL/api/graphql)
-
-echo $BOT_EMAIL
 
 session_token=$(echo "$auth_response" | grep -o '"sessionToken":"[^"]*' | awk -F ':"' '{print $2}')
 

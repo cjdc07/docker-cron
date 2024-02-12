@@ -12,6 +12,8 @@ auth_response=$(curl -X POST -H "Content-Type: application/json" -d '{
 
 session_token=$(echo "$auth_response" | grep -o '"sessionToken":"[^"]*' | awk -F ':"' '{print $2}')
 
+echo session_token
+
 curl -X POST -H "Content-Type: application/json" --cookie "keystonejs-session=$session_token" $CMS_URL/rest/daily-product-count
 
 # execute CMD

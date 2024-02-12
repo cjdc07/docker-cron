@@ -10,7 +10,7 @@ auth_response=$(curl -X POST -H "Content-Type: application/json" -d '{
   }
 }' $CMS_URL/api/graphql)
 
-echo $auth_response
+echo $BOT_EMAIL
 
 session_token=$(echo "$auth_response" | grep -o '"sessionToken":"[^"]*' | awk -F ':"' '{print $2}')
 

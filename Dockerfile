@@ -14,6 +14,7 @@ COPY logDailyProductCount.sh /logDailyProductCount.sh
 
 RUN crontab hello-cron
 RUN chmod +x entrypoint.sh
+RUN chmod +x logDailyProductCount.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 

@@ -10,6 +10,7 @@ RUN apt-get update \
 
 COPY crontab /hello-cron
 COPY entrypoint.sh /entrypoint.sh
+COPY logDailyProductCount.sh /logDailyProductCount.sh
 
 RUN crontab hello-cron
 RUN chmod +x entrypoint.sh
